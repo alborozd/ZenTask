@@ -18,8 +18,8 @@ namespace Shop.XmlDal
 
         private User GetUserFromNode(XmlNode node)
         {
-            string username = node.SelectSingleNode("Name").InnerText;
-            string amountStr = node.SelectSingleNode("Amount").InnerText;
+            string username = node.SelectSingleNode("Name")?.InnerText;
+            string amountStr = node.SelectSingleNode("Amount")?.InnerText;
 
             decimal amount = 0;
             decimal.TryParse(amountStr, out amount);

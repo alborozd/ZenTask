@@ -1,7 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Users>
   <User>
     <Name>Jerry</Name>
     <Amount>100.5</Amount>
   </User>
- </Users>
+  <User>
+    <Name>Michael</Name>
+    <Amount>15</Amount>
+  </User>
+  <User>
+    <Name>John Lennon</Name>
+    <Amount>0</Amount>
+  </User>
+  <User>
+    <Name>George</Name>    
+  </User>
+</Users>
