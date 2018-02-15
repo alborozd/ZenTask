@@ -42,5 +42,12 @@ namespace Shop.XmlDal.Tests
 
             Assert.Equal(expected, actual, new DiscountComparer());
         }
+
+        [Fact]
+        public void GetDiscountsByProductThatDoesntExist()
+        {
+            var actual = repository.GetDiscountsByProduct(1590);
+            Assert.Empty(actual);
+        }
     }
 }
