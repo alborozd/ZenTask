@@ -12,6 +12,6 @@ namespace Shop.Contracts.Dal
     public interface IRepository<T> where T : Entity
     {
         IEnumerable<T> GetAll();
-        T Add();
+        T Add(T entity);
     }
 }

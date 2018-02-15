@@ -13,6 +13,7 @@ namespace Shop.ConsoleClient.Infrastructure
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<Application>().As<IShopApplication>();
+            builder.RegisterType<ConsolePresenter>().As<IPresenter>();
 
             return builder.Build();
         }

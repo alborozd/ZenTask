@@ -7,9 +7,16 @@ namespace Shop.ConsoleClient.Core
 {
     public class Application : IShopApplication
     {
+        private readonly IPresenter presenter;
+
+        public Application(IPresenter presenter)
+        {
+            this.presenter = presenter;
+        }
+
         public void Run()
         {
-            Console.WriteLine("Hey!");
+            presenter.WriteLine("Hey");
             Console.ReadLine();
         }
     }

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.XmlDal", "Shop.XmlRepo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Logic", "Shop.Logic\Shop.Logic.csproj", "{A68538F6-7301-49E8-A8D8-5639BC104063}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.XmlDal.Tests", "Shop.XmlDal.Tests\Shop.XmlDal.Tests.csproj", "{487C84BA-F21D-42E5-A4B3-736CD3FA66E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Common", "Shop.Common\Shop.Common.csproj", "{A35D9FC2-1828-41B5-9157-447913030DB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{A68538F6-7301-49E8-A8D8-5639BC104063}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A68538F6-7301-49E8-A8D8-5639BC104063}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A68538F6-7301-49E8-A8D8-5639BC104063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487C84BA-F21D-42E5-A4B3-736CD3FA66E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487C84BA-F21D-42E5-A4B3-736CD3FA66E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487C84BA-F21D-42E5-A4B3-736CD3FA66E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487C84BA-F21D-42E5-A4B3-736CD3FA66E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A35D9FC2-1828-41B5-9157-447913030DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35D9FC2-1828-41B5-9157-447913030DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35D9FC2-1828-41B5-9157-447913030DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35D9FC2-1828-41B5-9157-447913030DB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
