@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Discounts>
+  <Discount ProductId="1">
+    <StartDate>2017-06-08</StartDate>
+    <Percents>10</Percents>
+  </Discount>
+  <Discount ProductId="1">
+    <StartDate>2017-10-25</StartDate>
+    <Percents>10.5</Percents>
+  </Discount>
+  <Discount ProductId="1">
+    <StartDate>2018-01-01</StartDate>
+    <Percents>5</Percents>
+  </Discount>
+  <Discount ProductId="2">
+    <StartDate>2018-01-01</StartDate>
+    <Percents>1</Percents>
+  </Discount>
+</Discounts>

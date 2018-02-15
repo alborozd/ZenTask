@@ -7,5 +7,6 @@ namespace Shop.Contracts.Dal
 {
     public interface IDiscountsRepository : IReadRepository<Discount>
     {
+        IEnumerable<Discount> GetDiscountsByProduct(int productId);
     }
 }
