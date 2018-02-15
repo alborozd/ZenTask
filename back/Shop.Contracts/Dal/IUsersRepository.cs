@@ -7,5 +7,6 @@ namespace Shop.Contracts.Dal
 {
     public interface IUsersRepository : IRepository<User>
     {
+        User GetByName(string name);
     }
 }
