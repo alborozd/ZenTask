@@ -9,9 +9,9 @@ namespace Shop.Contracts.Dal
     {
     }
 
-    public interface IRepository<T> where T : Entity
+    public interface IReadRepository<T> : IRepository 
+        where T : Entity
     {
         IEnumerable<T> GetAll();
-        T Add(T entity);
     }
 }

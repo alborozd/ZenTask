@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Shop.Contracts.Dal
 {
-    public interface ITransactionsRepository : IRepository<Transaction>
+    public interface ITransactionsRepository : IBaseRepository<Transaction>
     {
     }
 }

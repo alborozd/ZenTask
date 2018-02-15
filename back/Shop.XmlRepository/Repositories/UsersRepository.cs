@@ -16,7 +16,14 @@ namespace Shop.XmlDal
 
         protected override string FileName => "Users.xml";
 
-        private User GetUserFromNode(XmlNode node)
+        public User GetByName(string name)
+        {
+            return XmlRoot
+                .SelectSingleNode($"User[Name='{name}']")
+                .Return(node => GetEntity(node), null);
+        }
+
+        protected override User GetEntity(XmlNode node)
         {
             string username = node.SelectSingleNode("Name")?.InnerText;
             string amountStr = node.SelectSingleNode("Amount")?.InnerText;
@@ -29,18 +36,6 @@ namespace Shop.XmlDal
                 Name = username,
                 Amount = amount
             };
-        }
-
-        public User GetByName(string name)
-        {
-            return XmlRoot
-                .SelectSingleNode($"User[Name='{name}']")
-                .Return(node => GetUserFromNode(node), null);
-        }
-
-        protected override User GetEntity(XmlElement node)
-        {
-            return GetUserFromNode(node);
         }
 
         protected override XmlElement SetEntity(User entity, XmlDocument doc)

@@ -15,7 +15,7 @@ namespace Shop.XmlDal
 
         protected override string FileName => throw new NotImplementedException();
 
-        protected override Transaction GetEntity(XmlElement node)
+        protected override Transaction GetEntity(XmlNode node)
         {
             throw new NotImplementedException();
         }

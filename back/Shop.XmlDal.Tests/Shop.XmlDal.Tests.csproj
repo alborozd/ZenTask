@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Xml\Products.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Xml\Users.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

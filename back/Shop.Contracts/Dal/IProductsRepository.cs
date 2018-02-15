@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Shop.Contracts.Dal
 {
-    public interface IProductsRepository : IRepository<Product>
+    public interface IProductsRepository : IReadRepository<Product>
     {
+        void ChangeQuantity(int productId, int newQuantity);
     }
 }

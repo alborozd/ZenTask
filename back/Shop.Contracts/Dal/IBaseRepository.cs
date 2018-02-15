@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Shop.Contracts.Dal
 {
-    public interface IUsersRepository : IBaseRepository<User>
+    public interface IBaseRepository<T> : IReadRepository<T>
+        where T : Entity
     {
-        User GetByName(string name);
+        T Add(T entity);
     }
 }
