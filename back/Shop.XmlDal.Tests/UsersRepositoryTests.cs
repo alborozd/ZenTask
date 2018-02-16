@@ -3,6 +3,7 @@ using Shop.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shop.XmlDal.Repositories;
 using Xunit;
 
 namespace Shop.XmlDal.Tests

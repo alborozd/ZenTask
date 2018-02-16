@@ -1,13 +1,9 @@
-﻿using Shop.Contracts.Dal;
+﻿using System.Xml;
+using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Shop.XmlDal.Repositories;
 
-namespace Shop.XmlDal
+namespace Shop.XmlDal.Repositories
 {
     public abstract class BaseRepository<T> : ReadRepository<T>, IBaseRepository<T> 
         where T : Entity

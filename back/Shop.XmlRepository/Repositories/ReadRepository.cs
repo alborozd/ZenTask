@@ -11,7 +11,7 @@ namespace Shop.XmlDal.Repositories
     public abstract class ReadRepository<T> : IReadRepository<T>
         where T : Entity
     {
-        protected IXmlPathResolver pathResolver;
+        protected readonly IXmlPathResolver pathResolver;
 
         public ReadRepository(IXmlPathResolver pathResolver)
         {

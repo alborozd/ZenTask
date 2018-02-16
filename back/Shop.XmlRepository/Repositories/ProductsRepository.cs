@@ -1,34 +1,17 @@
-﻿using Shop.Contracts.Dal;
+﻿using System;
+using System.Xml;
+using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Contracts;
-using Shop.XmlDal.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 
-namespace Shop.XmlDal
+namespace Shop.XmlDal.Repositories
 {
     public class ProductsRepository : ReadRepository<Product>, IProductsRepository
     {
         public ProductsRepository(IXmlPathResolver resolver)
             : base(resolver) { }
 
-        protected override string FileName => "Products.xml";
-
-        private Tuple<decimal, int, int> ParseResult(string costStr, string qtyStr, string idStr)
-        {
-            decimal cost = 0;
-            decimal.TryParse(costStr, out cost);
-
-            int qty = 0;
-            int.TryParse(qtyStr, out qty);
-
-            int id = 0;
-            int.TryParse(idStr, out id);
-
-            return new Tuple<decimal, int, int>(cost, qty, id);
-        }        
+        protected override string FileName => "Products.xml";     
 
         protected override Product GetEntity(XmlNode node)
         {
@@ -37,14 +20,16 @@ namespace Shop.XmlDal
             string costStr = node.SelectSingleNode("Cost")?.InnerText;
             string qtyStr = node.SelectSingleNode("Quantity")?.InnerText;
 
-            var parsedResult = ParseResult(costStr, qtyStr, idStr);
-
+            decimal.TryParse(costStr, out decimal cost);
+            int.TryParse(qtyStr, out int qty);
+            int.TryParse(idStr, out int id);
+            
             return new Product()
             {
-                Id = parsedResult.Item3,
+                Id = id,
                 Name = name,
-                Cost = parsedResult.Item1,
-                Quantity = parsedResult.Item2
+                Cost = cost,
+                Quantity = qty
             };
         }
 

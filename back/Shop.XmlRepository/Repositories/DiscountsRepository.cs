@@ -1,14 +1,13 @@
-﻿using Shop.Contracts.Dal;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Xml;
+using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Contracts;
-using Shop.XmlDal.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Linq;
 
-namespace Shop.XmlDal
+namespace Shop.XmlDal.Repositories
 {
     public class DiscountsRepository : ReadRepository<Discount>, IDiscountsRepository
     {
@@ -17,34 +16,21 @@ namespace Shop.XmlDal
 
         protected override string FileName => "Discounts.xml";
 
-        private Tuple<int, DateTime, float> ParseResult(string productIdStr, string dateStr, string percentsStr)
-        {
-            int productId = 0;
-            int.TryParse(productIdStr, out productId);
-
-            DateTime date = DateTime.Now; //TODO: parse date correctly
-            DateTime.TryParse(dateStr, out date);
-
-            float percents = 0;
-            float.TryParse(percentsStr, out percents);
-
-            return new Tuple<int, DateTime, float>(productId, date, percents);
-
-        }
-
         protected override Discount GetEntity(XmlNode node)
         {
             string productIdStr = node.SelectSingleNode("@ProductId")?.Value;
             string dateStr = node.SelectSingleNode("StartDate")?.InnerText;
             string percentsStr = node.SelectSingleNode("Percents")?.InnerText;
 
-            var result = ParseResult(productIdStr, dateStr, percentsStr);
+            DateTime date = DateTime.Parse(dateStr, CultureInfo.InvariantCulture);
+            int.TryParse(productIdStr, out int productId);
+            float.TryParse(percentsStr, out float percents);
 
             return new Discount()
             {
-                ProductId = result.Item1,
-                StartDate = result.Item2,
-                Percents = result.Item3
+                ProductId = productId,
+                StartDate = date,
+                Percents = percents
             };
         }
 
@@ -53,7 +39,7 @@ namespace Shop.XmlDal
             return XmlRoot
                 .SelectNodes($"Discount[@ProductId='{productId}']")
                 ?.Cast<XmlNode>()
-                ?.Select(node => GetEntity(node)) ?? Enumerable.Empty<Discount>();
+                ?.Select(GetEntity) ?? Enumerable.Empty<Discount>();
         }
     }
 }

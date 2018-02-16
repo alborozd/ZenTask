@@ -1,13 +1,11 @@
-﻿using Shop.Common;
+﻿using System.Globalization;
+using System.Xml;
+using Shop.Common;
 using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 
-namespace Shop.XmlDal
+namespace Shop.XmlDal.Repositories
 {
     public class UsersRepository : BaseRepository<User>, IUsersRepository
     {
@@ -20,7 +18,7 @@ namespace Shop.XmlDal
         {
             return XmlRoot
                 .SelectSingleNode($"User[Name='{name}']")
-                .Return(node => GetEntity(node), null);
+                .Return(GetEntity, null);
         }
 
         protected override User GetEntity(XmlNode node)
@@ -28,8 +26,7 @@ namespace Shop.XmlDal
             string username = node.SelectSingleNode("Name")?.InnerText;
             string amountStr = node.SelectSingleNode("Amount")?.InnerText;
 
-            decimal amount = 0;
-            decimal.TryParse(amountStr, out amount);
+            decimal.TryParse(amountStr, out decimal amount);
 
             return new User()
             {
@@ -45,7 +42,7 @@ namespace Shop.XmlDal
             username.AppendChild(doc.CreateTextNode(entity.Name));
 
             XmlElement amount = doc.CreateElement("Amount");
-            amount.AppendChild(doc.CreateTextNode(entity.Amount.ToString()));
+            amount.AppendChild(doc.CreateTextNode(entity.Amount.ToString(CultureInfo.InvariantCulture)));
 
             userRoot.AppendChild(username);
             userRoot.AppendChild(amount);
