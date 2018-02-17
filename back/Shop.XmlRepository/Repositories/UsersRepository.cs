@@ -14,6 +14,41 @@ namespace Shop.XmlDal.Repositories
 
         protected override string FileName => "Users.xml";
 
+        public void ChangeQuantity(int productId, int newQuantity)
+        {
+            string path = pathResolver.GetXmlPath(FileName);
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlElement root = doc.DocumentElement;
+
+            XmlNode node = root.SelectSingleNode($"Product[Id={productId}]");
+            if (node == null)
+                return;
+
+            XmlNode quantity = node.SelectSingleNode("Quantity");
+            if (quantity == null)
+                return;
+
+            quantity.InnerText = newQuantity.ToString();
+            doc.Save(path);
+        }
+
+        public void ChangeBalance(string username, decimal newBalance)
+        {
+            string path = pathResolver.GetXmlPath(FileName);
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+
+            doc.DocumentElement
+                .SelectSingleNode($"User[Name='{username}']")
+                .Return(node => node.SelectSingleNode("Amount"))
+                .Do(balance => balance.InnerText = newBalance.ToString(CultureInfo.InvariantCulture));
+
+            doc.Save(path);
+        }
+
         public User GetByName(string name)
         {
             return XmlRoot

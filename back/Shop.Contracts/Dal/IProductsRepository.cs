@@ -8,5 +8,6 @@ namespace Shop.Contracts.Dal
     public interface IProductsRepository : IReadRepository<Product>
     {
         void ChangeQuantity(int productId, int newQuantity);
+        Product GetById(int productId);
     }
 }

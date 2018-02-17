@@ -3,6 +3,7 @@ using System.Xml;
 using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Contracts;
+using Shop.Common;
 
 namespace Shop.XmlDal.Repositories
 {
@@ -11,7 +12,7 @@ namespace Shop.XmlDal.Repositories
         public ProductsRepository(IXmlPathResolver resolver)
             : base(resolver) { }
 
-        protected override string FileName => "Products.xml";     
+        protected override string FileName => "Products.xml";
 
         protected override Product GetEntity(XmlNode node)
         {
@@ -23,7 +24,7 @@ namespace Shop.XmlDal.Repositories
             decimal.TryParse(costStr, out decimal cost);
             int.TryParse(qtyStr, out int qty);
             int.TryParse(idStr, out int id);
-            
+
             return new Product()
             {
                 Id = id,
@@ -39,18 +40,20 @@ namespace Shop.XmlDal.Repositories
 
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
-            XmlElement root = doc.DocumentElement;
-            
-            XmlNode node = root.SelectSingleNode($"Product[Id={productId}]");
-            if (node == null)
-                return;
 
-            XmlNode quantity = node.SelectSingleNode("Quantity");
-            if (quantity == null)
-                return;
+            doc.DocumentElement
+                .SelectSingleNode($"Product[Id={productId}]")
+                .Return(product => product.SelectSingleNode("Quantity"))
+                .Do(quantity => quantity.InnerText = newQuantity.ToString());
 
-            quantity.InnerText = newQuantity.ToString();
             doc.Save(path);
+        }
+
+        public Product GetById(int productId)
+        {
+            return XmlRoot
+                .SelectSingleNode($"Product[Id='{productId.ToString()}']")
+                .Return(GetEntity, null);
         }
     }
 }

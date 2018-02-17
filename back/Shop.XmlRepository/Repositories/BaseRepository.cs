@@ -2,6 +2,7 @@
 using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Contracts;
+using System;
 
 namespace Shop.XmlDal.Repositories
 {
@@ -15,6 +16,9 @@ namespace Shop.XmlDal.Repositories
 
         public T Add(T entity)
         {
+            if (entity == null)
+                throw new ArgumentException("entity");
+            
             string filePath = pathResolver.GetXmlPath(FileName);
 
             XmlDocument doc = new XmlDocument();

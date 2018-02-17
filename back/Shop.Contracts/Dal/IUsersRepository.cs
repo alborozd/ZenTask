@@ -8,5 +8,6 @@ namespace Shop.Contracts.Dal
     public interface IUsersRepository : IBaseRepository<User>
     {
         User GetByName(string name);
+        void ChangeBalance(string username, decimal newBalance);
     }
 }

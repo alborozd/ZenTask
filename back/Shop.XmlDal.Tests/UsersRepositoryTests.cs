@@ -65,5 +65,24 @@ namespace Shop.XmlDal.Tests
             var nullUser = repository.GetByName("Some strange name");
             Assert.Null(nullUser);
         }
+
+        [Test, Order(4)]
+        public void ChangeBalanceTests()
+        {
+            //change balance for not existing user. shouldn't be exception
+            repository.ChangeBalance("some long username", 100);
+
+            //change balance for existing user
+            string userName = "Jerry";
+            decimal newBalance = 150M;
+
+            repository.ChangeBalance(userName, newBalance);
+
+            var actual = repository.GetByName(userName);
+            var expected = collectionInit.First(t => t.Name == userName);
+            expected.Amount = newBalance;
+
+            Assert.IsTrue(new UserComparer().Equals(actual, expected));
+        }
     }
 }

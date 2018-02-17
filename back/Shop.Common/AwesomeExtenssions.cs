@@ -2,7 +2,7 @@
 
 namespace Shop.Common
 {
-    public static class Maybe
+    public static class AwesomeExtenssions
     {
         public static TO Assert<TO>(this TO item, Func<Exception> exception)
         {

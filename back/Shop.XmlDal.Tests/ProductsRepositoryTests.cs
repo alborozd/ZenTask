@@ -38,6 +38,11 @@ namespace Shop.XmlDal.Tests
         [Test, Order(2)]
         public void ChangeProductQuantity()
         {
+            //try to change quantiti of not existing product
+            repository.ChangeQuantity(1000, 1);
+
+            //next steps for existing product
+
             int productId = 2;
             int initQuantity = collectionInit.First(t => t.Id == productId).Quantity;
 
@@ -47,6 +52,16 @@ namespace Shop.XmlDal.Tests
             var product = repository.GetAll().First(t => t.Id == productId);
 
             Assert.AreEqual(newQuantity, product.Quantity);
+        }
+
+        [Test, Order(3)]
+        public void GetProductById()
+        {
+            int productId = 3;
+            var actual = repository.GetById(productId);
+            var expected = collectionInit.First(t => t.Id == productId);
+
+            Assert.IsTrue(new ProductComparer().Equals(actual, expected));
         }
     }
 }
