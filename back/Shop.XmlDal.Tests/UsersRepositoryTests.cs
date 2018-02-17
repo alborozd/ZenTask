@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Shop.XmlDal.Repositories;
-using Xunit;
+using NUnit.Framework;
 
 namespace Shop.XmlDal.Tests
 {
+    [TestFixture]
     public class UsersRepositoryTests
     {
         private IUsersRepository repository;
@@ -26,14 +27,14 @@ namespace Shop.XmlDal.Tests
             repository = new UsersRepository(pathResolver);
         }
 
-        [Fact]
+        [Test, Order(1)]
         public void GetAllUsersTest()
         {
             var actual = repository.GetAll().ToList();
-            Assert.Equal(collectionInit, actual, new UserComparer());
+            Assert.That(collectionInit, Is.EquivalentTo(actual).Using(new UserComparer()));
         }
 
-        [Fact]
+        [Test, Order(2)]
         public void AddUserTest()
         {
             var user = new User();
@@ -46,10 +47,10 @@ namespace Shop.XmlDal.Tests
             expected.Add(user);
 
             var actual = repository.GetAll().ToList();
-            Assert.Equal(expected, actual, new UserComparer());
+            Assert.That(expected, Is.EquivalentTo(actual).Using(new UserComparer()));
         }
 
-        [Fact]
+        [Test, Order(3)]
         public void SearchUserByName()
         {
             //lets find user that exists in xml
@@ -60,7 +61,7 @@ namespace Shop.XmlDal.Tests
             var expected = collectionInit.First(t => t.Name == search);
             Assert.True(new UserComparer().Equals(expected, user));
 
-            //lets fin user tha doesn't exist in xml
+            //lets find user tha doesn't exist in xml
             var nullUser = repository.GetByName("Some strange name");
             Assert.Null(nullUser);
         }

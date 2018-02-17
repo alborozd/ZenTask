@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Shop.XmlDal.Repositories;
-using Xunit;
+using NUnit.Framework;
 
 namespace Shop.XmlDal.Tests
 {
-
+    // TODO: implement before and after tests methods logic to backup xml files before and restore after every test. instead if using order attribute
+    [TestFixture]
     public class ProductsRepositoryTests
     {
         private IProductsRepository repository;
@@ -27,17 +28,14 @@ namespace Shop.XmlDal.Tests
             repository = new ProductsRepository(resolver);
         }
 
-        [Fact]
+        [Test, Order(1)]
         public void ProductTests()
         {
             var actual = repository.GetAll().ToList();
-            Assert.Equal(collectionInit, actual, new ProductComparer());
-
-            //lets run tests for quantity changing
-            // TODO: implement before and after tests methods logic to backup xml files before and restore after every test
-            ChangeProductQuantity();
+            Assert.That(collectionInit, Is.EquivalentTo(actual).Using(new ProductComparer()));
         }
-
+        
+        [Test, Order(2)]
         public void ChangeProductQuantity()
         {
             int productId = 2;
@@ -48,7 +46,7 @@ namespace Shop.XmlDal.Tests
             repository.ChangeQuantity(productId, newQuantity);
             var product = repository.GetAll().First(t => t.Id == productId);
 
-            Assert.Equal(newQuantity, product.Quantity);            
+            Assert.AreEqual(newQuantity, product.Quantity);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace Shop.XmlDal.Repositories
             quantity.AppendChild(doc.CreateTextNode(entity.Quantity.ToString()));
 
             XmlElement cost = doc.CreateElement("Cost");
-            cost.AppendChild(doc.CreateElement(entity.Cost.ToString(CultureInfo.InvariantCulture)));
+            cost.AppendChild(doc.CreateTextNode(entity.Cost.ToString(CultureInfo.InvariantCulture)));
 
             XmlElement discount = doc.CreateElement("Discount");
             discount.AppendChild(doc.CreateTextNode(entity.Discount.ToString(CultureInfo.InvariantCulture)));

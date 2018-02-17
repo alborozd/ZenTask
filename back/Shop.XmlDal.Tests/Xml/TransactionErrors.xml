@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Errors>
+  <Error>
+    <Date>2017-10-05</Date>
+    <Description>Invalid operation for current user</Description>
+  </Error>
+  <Error>
+    <Date>2017-10-05</Date>
+    <Description>Not enough money to buy the product</Description>
+  </Error>
+</Errors>

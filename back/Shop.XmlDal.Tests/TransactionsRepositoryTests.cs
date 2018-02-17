@@ -3,10 +3,11 @@ using System.Linq;
 using Shop.Contracts.Dal;
 using Shop.Domain;
 using Shop.XmlDal.Repositories;
-using Xunit;
+using NUnit.Framework;
 
 namespace Shop.XmlDal.Tests
 {
+    [TestFixture]
     public class TransactionsRepositoryTests
     {
         private ITransactionsRepository repository;
@@ -17,21 +18,21 @@ namespace Shop.XmlDal.Tests
             new Transaction() { Username = "Jerry", ProductId = 2, ProductName = "Water", Quantity = 1, Cost = 5, Discount = 1, SellCost = 4.95M, Amount = 4.95M},
             new Transaction() { Username = "John Lennon", ProductId = 3, ProductName = "Bread", Quantity = 3, Cost = 7, Discount = 0, SellCost = 7, Amount = 21}
         };
-        
+
         public TransactionsRepositoryTests()
         {
             var resolver = new XmlPathResolver();
             repository = new TransactionsRepository(resolver);
         }
 
-        [Fact]
+        [Test, Order(1)]
         public void GetAlltransactionsTest()
         {
             var actual = repository.GetAll().ToList();
-            Assert.Equal(collectionInit, actual, new TransactionComparer());
+            Assert.That(collectionInit, Is.EquivalentTo(actual).Using(new TransactionComparer()));
         }
 
-        [Fact]
+        [Test, Order(2)]
         public void AddTransactionTest()
         {
             var transactionToAdd = new Transaction()
@@ -51,7 +52,7 @@ namespace Shop.XmlDal.Tests
             expected.Add(transactionToAdd);
 
             var actual = repository.GetAll().ToList();
-            Assert.Equal(expected, actual);
+            Assert.That(expected, Is.EquivalentTo(actual).Using(new TransactionComparer()));
         }
     }
 }
