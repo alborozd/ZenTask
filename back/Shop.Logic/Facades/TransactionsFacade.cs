@@ -79,7 +79,7 @@ namespace Shop.Logic.Facades
 
                     float userDiscount = GetDiscount(productId);
                     decimal discountPrice = userDiscount != 0
-                        ? ((product.Cost / 100) * (decimal)userDiscount)
+                        ? product.Cost - ((product.Cost / 100) * (decimal)userDiscount)
                         : product.Cost;
 
                     decimal amount = discountPrice * quantity;
@@ -90,6 +90,7 @@ namespace Shop.Logic.Facades
                     transactionsRepository.Add(new Transaction()
                     {
                         Username = user.Name,
+                        ProductId = product.Id,
                         ProductName = product.Name,
                         Quantity = quantity,
                         Cost = product.Cost,
@@ -98,7 +99,7 @@ namespace Shop.Logic.Facades
                         Amount = amount
                     });
 
-                    productsRepository.ChangeQuantity(productId, quantity);
+                    productsRepository.ChangeQuantity(productId, product.Quantity - quantity);
                     usersRepository.ChangeBalance(user.Name, user.Amount - amount);
                 }
                 catch (Exception ex) when (!(ex is ValidationException))
