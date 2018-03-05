@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shop.ConsoleClient.Core
+namespace Shop.ConsoleClient.Infrastructure
 {
     public class ConsolePresenter : IPresenter
     {

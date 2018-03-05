@@ -11,8 +11,18 @@ namespace Shop.ConsoleClient
         {
             using (var scope = AutofacConfig.GetContainer().BeginLifetimeScope())
             {
-                IShopApplication app = scope.Resolve<IShopApplication>();
-                app.Run();
+                IPresenter presenter = scope.Resolve<IPresenter>();
+                try
+                {
+                    IShopApplication app = scope.Resolve<IShopApplication>();
+                    app.Run();
+                }
+                catch (Exception ex)
+                {                    
+                    presenter.WriteLine(ex.Message);
+                }
+
+                Console.ReadLine();
             }
         }
     }

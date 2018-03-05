@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Products>
+  <Product>
+    <Id>1</Id>
+    <Name>Milk</Name>    
+    <Cost>10.50</Cost>
+    <Quantity>150</Quantity>
+  </Product>
+  <Product>
+    <Id>2</Id>
+    <Name>Water</Name>
+    <Cost>5</Cost>
+    <Quantity>100</Quantity>
+  </Product>
+  <Product>
+    <Id>3</Id>
+    <Name>Bread</Name>
+    <Cost>7</Cost>
+    <Quantity>0</Quantity>
+  </Product>
+</Products>
+

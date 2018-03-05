@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <User>
+    <Name>Jerry</Name>
+    <Amount>100.5</Amount>
+  </User>
+  <User>
+    <Name>Michael</Name>
+    <Amount>15</Amount>
+  </User>
+  <User>
+    <Name>John Lennon</Name>
+    <Amount>0</Amount>
+  </User>
+  <User>
+    <Name>George</Name>
+  </User>
+  <User>
+    <Name>456</Name>
+    <Amount>10000</Amount>
+  </User>
+  <User>
+    <Name>48</Name>
+    <Amount>10000</Amount>
+  </User>
+  <User>
+    <Name>f2ef</Name>
+    <Amount>10000</Amount>
+  </User>
+</Users>

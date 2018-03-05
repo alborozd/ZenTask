@@ -9,4 +9,34 @@
     <PackageReference Include="Autofac" Version="4.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\Screens\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shop.Common\Shop.Common.csproj" />
+    <ProjectReference Include="..\Shop.Contracts\Shop.Contracts.csproj" />
+    <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj" />
+    <ProjectReference Include="..\Shop.Logic\Shop.Logic.csproj" />
+    <ProjectReference Include="..\Shop.XmlRepository\Shop.XmlDal.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Xml\Discounts.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Xml\Products.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Xml\TransactionErrors.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Xml\Transactions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Xml\Users.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
