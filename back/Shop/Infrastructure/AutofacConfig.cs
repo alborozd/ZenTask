@@ -30,6 +30,8 @@ namespace Shop.ConsoleClient.Infrastructure
             builder.RegisterType<MainScreen>().As<IMainScreen>();
             builder.RegisterType<SelectUserScreen>().As<ISelectUserScreen>();
             builder.RegisterType<InputUserScreen>().As<IInputUserScreen>();
+            builder.RegisterType<ProductsListScreen>().As<IProductsListScreen>();
+            builder.RegisterType<ProductScreen>().As<IProductScreen>();
 
             //facades
             builder.RegisterType<TransactionsFacade>();

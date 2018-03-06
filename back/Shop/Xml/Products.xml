@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Products>
   <Product>
     <Id>1</Id>
-    <Name>Milk</Name>    
+    <Name>Milk</Name>
     <Cost>10.50</Cost>
-    <Quantity>150</Quantity>
+    <Quantity>140</Quantity>
   </Product>
   <Product>
     <Id>2</Id>
@@ -19,4 +19,3 @@
     <Quantity>0</Quantity>
   </Product>
 </Products>
-

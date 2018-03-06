@@ -27,7 +27,7 @@ namespace Shop.ConsoleClient.Core
             User user = dataBus.GetData<User>(Constants.DataKeys.User);
             if (user != null)
             {
-                presenter.WriteLine("Selected user: " + user.Name);
+                presenter.WriteLine($"Selected user: {user.Name}. Money: {user.Amount}");
                 presenter.WriteLine("--------------------------------\n");
             }
             else
@@ -41,31 +41,46 @@ namespace Shop.ConsoleClient.Core
         {
             while(true)
             {
-                Console.Clear();
-                ShowUserInfo();
-                currentScreen.Show();
-
-                IScreen inputHandler;
-
-                while(true)
+                try
                 {
-                    try
+                    Console.Clear();
+                    ShowUserInfo();
+                    currentScreen.Show();
+
+                    IScreen inputHandler;
+
+                    while (true)
                     {
-                        string pressedKey = Console.ReadLine();
-                        inputHandler = currentScreen.HandleInput(pressedKey);
-                        break;
+                        try
+                        {
+                            string pressedKey = Console.ReadLine();
+                            inputHandler = currentScreen.HandleInput(pressedKey);
+                            break;
+                        }
+                        catch (InvalidInputException ex)
+                        {
+                            presenter.WriteLine(ex.Message);
+                            continue;
+                        }
                     }
-                    catch (InvalidInputException ex)
-                    {
-                        presenter.WriteLine(ex.Message);
-                        continue;
-                    }                    
+
+                    if (inputHandler == null)
+                        break;
+
+                    currentScreen = inputHandler;
                 }
-                
-                if (inputHandler == null)
-                    break;
-                
-                currentScreen = inputHandler;
+                catch(ScreenException ex)
+                {
+                    presenter.WriteLine(ex.Message);
+                    Console.ReadKey();
+                    if (ex.ScreenToShow != null)
+                        currentScreen = ex.ScreenToShow;
+                }
+                catch (Exception ex)
+                {
+                    presenter.WriteLine(ex.Message);
+                    Console.ReadKey();                    
+                }
             }
             
         }

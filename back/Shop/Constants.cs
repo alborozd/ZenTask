@@ -9,6 +9,7 @@ namespace Shop.ConsoleClient
         public static class DataKeys
         {
             public const string User = "User";
+            public const string SelectedProduct = "SelectedProduct";
         }
     }
 }

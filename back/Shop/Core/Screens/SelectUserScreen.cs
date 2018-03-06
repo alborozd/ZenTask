@@ -44,12 +44,12 @@ namespace Shop.ConsoleClient.Core.Screens
             }            
         }
 
-        private bool IsValidUserInput(string input, out int selectedUser)
-        {
-            return int.TryParse(input, out selectedUser) 
-                && selectedUser >= 0 
-                && selectedUser - 1 < _users.Length;
-        }
+        //private bool IsValidUserInput(string input, out int selectedUser)
+        //{
+        //    return int.TryParse(input, out selectedUser) 
+        //        && selectedUser >= 0 
+        //        && selectedUser - 1 < _users.Length;
+        //}
 
         public IScreen HandleInput(string input)
         {
@@ -58,7 +58,8 @@ namespace Shop.ConsoleClient.Core.Screens
 
             int selectedUser = -1;
 
-            if (IsValidUserInput(input, out selectedUser))
+            //if (IsValidUserInput(input, out selectedUser))
+            if (input.IsValidCollectionSelect(_users.Length, out selectedUser))
             {
                 dataBus.SetData(Constants.DataKeys.User, _users[selectedUser - 1]);
             }
