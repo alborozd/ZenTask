@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Frontend task</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="js/utils.js"></script>
+    <script src="js/usersService.js"></script>
+    <script src="js/usersTable.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="controls">
+                <input type="button" onclick="onAddUserClick()" value="Add user" />
+            </div>
+            <div class="users">
+                <table class="users-table">
+                    <thead>
+                        <th>Login</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Role</th>
+                        <th>Created on</th>
+                        <th>Updated on</th>
+                        <th>Is Active</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!--modal windows markup-->
+    <div id="modal-container" onclick="closeModal()">
+    </div>
+    <div id="modal-form-container">
+        <form class="users-form">
+            <div class="form-item">
+                <label for="login">
+                    Login
+                    <input type="text" id="login" />
+                </label>
+            </div>
+            <div class="form-item">
+                <label for="firstName">
+                    FirsName
+                    <input type="text" id="firstName" />
+                </label>
+            </div>
+            <div class="form-item">
+                <label for="lastName">
+                    LastName
+                    <input type="text" id="lastName" />
+                </label>
+            </div>
+            <div class="form-item">
+                <label for="rolw">
+                    Rolw
+                    <input type="text" id="role" />
+                </label>
+            </div>
+            <div class="form-item">
+                <label for="isActive">
+                    Isactive
+                    <input type="checkbox" id="isActive" />
+                </label>
+            </div>
+            <div class="buttons-block">
+                <input type="button" value="Save" onclick="formSave()" />
+                <input type="button" value="Cancel" onclick="closeModal()" />
+            </div>
+        </form>
+    </div>
+    <!--end modal windows markup-->
+</body>
+
+</html>

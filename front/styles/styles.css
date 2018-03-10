@@ -1,0 +1,88 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    margin-top: 100px;
+}
+
+button, input[type="button"] {
+    background-color: #efefef;
+    border-radius: 10px;
+    color: #655e5e;
+    border: 1px #c7c1c1 solid;
+}
+
+button, input[type="button"]:hover {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.controls {
+
+}
+
+.users {
+    margin-top: 20px;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    width: 800px;
+}
+
+.users-table th, td {
+    border: 1px solid black;
+}
+
+.users-table th {
+    height:50px;
+}
+
+.users-table td {
+    color: #423b3b;
+}
+
+#modal-container {
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+#modal-form-container {
+    background: rgba(255, 255, 255, 1);
+    width: 550px;
+    margin: 0 auto;
+    height: 200px;
+    padding: 10px;
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -275px;
+}
+
+.users-form {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.users-form .form-item {
+    margin-top: 10px;
+}
+
+.users-form input[type="text"] {
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.users-form .buttons-block {
+    margin-top: 10px;
+}
