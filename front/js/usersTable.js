@@ -19,12 +19,9 @@ function UsersTable() {
             var table = document.getElementsByClassName("users-table")[0];
             var tbody = table.tBodies[0];
 
-            if (tbody.rows) {
-                var existingRows = tbody.rows.length;
-                for(var i = 0; i < existingRows; i++) {
-                    tbody.deleteRow(i);
-                }
-            }
+			while(tbody.hasChildNodes()) {
+				tbody.removeChild(tbody.lastChild);
+			}
 
             var len = users.length;
             for (var i = 0; i < len; i++) {

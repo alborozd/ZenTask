@@ -59,7 +59,7 @@ button, input[type="button"]:hover {
     background: rgba(255, 255, 255, 1);
     width: 550px;
     margin: 0 auto;
-    height: 200px;
+    height: 400px;
     padding: 10px;
     display: none;
     position: absolute;
